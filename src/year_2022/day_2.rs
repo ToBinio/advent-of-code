@@ -83,11 +83,11 @@ impl Day2 {
 
 impl Day for Day2 {
     fn part_1() -> String {
-        Day2::compute_part_1(include_str!("../../resources/year_2022/day2/part.txt")).to_string()
+        Day2::compute_part_1(include_str!("../../resources/year_2022/day2/data.txt")).to_string()
     }
 
     fn part_2() -> Option<String> {
-        Some(Day2::compute_part_2(include_str!("../../resources/year_2022/day2/part.txt")).to_string())
+        Some(Day2::compute_part_2(include_str!("../../resources/year_2022/day2/data.txt")).to_string())
     }
 }
 
@@ -96,8 +96,8 @@ mod tests {
     use crate::year_2022::day_2::Day2;
 
     #[test]
-    fn part1_test() {
-        assert_eq!(Day2::compute_part_1(include_str!("../../resources/year_2022/day2/test_part.txt")), 15);
+    fn part_1_test() {
+        assert_eq!(Day2::compute_part_1(include_str!("../../resources/year_2022/day2/test.txt")), 15);
     }
 
     #[test]
@@ -116,8 +116,8 @@ mod tests {
     }
 
     #[test]
-    fn part2_test() {
-        assert_eq!(Day2::compute_part_2(include_str!("../../resources/year_2022/day2/test_part.txt")), 12);
+    fn part_2_test() {
+        assert_eq!(Day2::compute_part_2(include_str!("../../resources/year_2022/day2/test.txt")), 12);
     }
 
     #[test]
