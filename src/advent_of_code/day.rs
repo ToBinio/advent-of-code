@@ -1,12 +1,18 @@
 pub trait Day {
-    fn part_1(&mut self) -> String;
-    fn part_2(&mut self) -> String;
+    fn part_1() -> String;
+    fn part_2() -> Option<String>;
 
-    fn run(&mut self) {
+    fn run() {
         println!("Part 1");
-        println!("{:?}", self.part_1());
+        println!("{:?}", Self::part_1());
+
+        let part2 = Self::part_2();
+
+        if part2.is_none() {
+            return;
+        }
 
         println!("Part 2");
-        println!("{:?}", self.part_2());
+        println!("{:?}", part2.unwrap());
     }
 }
