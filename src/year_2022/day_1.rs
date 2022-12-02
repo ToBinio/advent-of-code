@@ -34,13 +34,7 @@ impl Day1 {
     pub fn compute_part_2(input: &str) -> i32 {
         let elves_calories = Self::generate_elves_calories(input);
 
-        let mut sum = 0;
-
-        for i in 0..3 {
-            sum += elves_calories.get(i).unwrap().to_owned();
-        }
-
-        sum
+        elves_calories[0..3].iter().sum()
     }
 }
 

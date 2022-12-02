@@ -24,9 +24,9 @@ impl Day2 {
             let mut split = line.split(" ");
             let mut split = (split.next().unwrap(), split.next().unwrap());
 
-            let own_chossen = Self::get_what_to_choose(split);
+            let own_chosen = Self::get_what_to_choose(split);
 
-            split.1 = own_chossen.as_str();
+            split.1 = own_chosen.as_str();
 
             sum += Self::get_score(split.1);
             sum += Self::get_result(split);

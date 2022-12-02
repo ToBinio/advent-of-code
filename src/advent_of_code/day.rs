@@ -4,7 +4,7 @@ pub trait Day {
 
     fn run() {
         println!("Part 1");
-        println!("{:?}", Self::part_1());
+        println!("{}", Self::part_1());
 
         let part2 = Self::part_2();
 
@@ -12,7 +12,7 @@ pub trait Day {
             return;
         }
 
-        println!("Part 2");
-        println!("{:?}", part2.unwrap());
+        println!("\nPart 2");
+        println!("{}", part2.unwrap());
     }
 }
