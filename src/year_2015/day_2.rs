@@ -44,7 +44,7 @@ impl Day2 {
 
 impl Day for Day2 {
     fn get_path() -> String {
-        "../../resources/year_2015/day2/data.txt".to_string()
+        "resources/year_2015/day2_data.txt".to_string()
     }
 
     fn part_1(input: &str) -> String {
