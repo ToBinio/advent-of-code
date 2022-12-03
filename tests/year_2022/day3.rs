@@ -1,4 +1,4 @@
-use advent_of_code::year_2022::day_3::Day3;
+use advent_of_code::year_2022::day3::Day3;
 
 #[test]
 fn get_shared_item_test() {

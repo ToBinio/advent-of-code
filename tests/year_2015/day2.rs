@@ -1,4 +1,4 @@
-use advent_of_code::year_2015::day_2::Day2;
+use advent_of_code::year_2015::day2::Day2;
 
 #[test]
 fn get_needed_wrapping_paper_test() {

@@ -1,2 +1,2 @@
-mod day_1;
-mod day_2;
+mod day1;
+mod day2;

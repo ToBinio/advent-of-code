@@ -1,5 +1,5 @@
 use advent_of_code::advent_of_code::day::Day;
-use advent_of_code::year_2022::day_2::Day2;
+use advent_of_code::year_2022::day2::Day2;
 
 #[test]
 fn part_1_test() {
