@@ -1,10 +1,6 @@
-use crate::advent_of_code::day::Day;
-use crate::year_2015::day_2::Day2;
-
-mod advent_of_code;
-mod year_2022;
-mod year_2015;
+use advent_of_code::advent_of_code::day::Day;
+use advent_of_code::year_2022::day_3::Day3;
 
 fn main() {
-    Day2::run();
+    Day3::run();
 }
