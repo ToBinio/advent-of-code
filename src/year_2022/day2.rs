@@ -68,7 +68,7 @@ impl Day for Day2 {
         sum.to_string()
     }
 
-    fn part_2(input: &str) -> Option<String> {
+    fn part_2(input: &str) -> String {
         let mut sum = 0;
 
         for line in input.lines() {
@@ -83,6 +83,6 @@ impl Day for Day2 {
             sum += Self::get_result(split);
         }
 
-        Some(sum.to_string())
+        sum.to_string()
     }
 }

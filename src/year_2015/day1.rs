@@ -22,7 +22,7 @@ impl Day for Day1 {
         floor.to_string()
     }
 
-    fn part_2(input: &str) -> Option<String> {
+    fn part_2(input: &str) -> String {
         let mut floor = 0;
 
         for (index, action) in input.chars().enumerate() {
@@ -33,10 +33,10 @@ impl Day for Day1 {
             };
 
             if floor < 0 {
-                return Some((index + 1).to_string());
+                return (index + 1).to_string();
             }
         }
 
-        Some(floor.to_string())
+        floor.to_string()
     }
 }

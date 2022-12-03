@@ -8,5 +8,5 @@ fn part_1_test() {
 
 #[test]
 fn part_2_test() {
-    assert_eq!(Day1::part_2(include_str!("../../resources/year_2022/day1/test.txt")).unwrap(), "45000")
+    assert_eq!(Day1::part_2(include_str!("../../resources/year_2022/day1/test.txt")), "45000")
 }

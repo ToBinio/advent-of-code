@@ -37,9 +37,9 @@ impl Day for Day1 {
         elves_calories.first().unwrap().to_owned().to_string()
     }
 
-    fn part_2(input: &str) -> Option<String> {
+    fn part_2(input: &str) -> String {
         let elves_calories = Self::generate_elves_calories(input);
 
-        Some((elves_calories[0..3].iter().sum::<i32>()).to_string())
+        (elves_calories[0..3].iter().sum::<i32>()).to_string()
     }
 }

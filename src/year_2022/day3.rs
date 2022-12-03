@@ -47,7 +47,7 @@ impl Day for Day3 {
         sum.to_string()
     }
 
-    fn part_2(input: &str) -> Option<String> {
+    fn part_2(input: &str) -> String {
         let mut sum = 0;
         let lines: Vec<&str> = input.lines().collect();
 
@@ -55,6 +55,6 @@ impl Day for Day3 {
             sum += Day3::get_priority(Day3::get_group_item(lines.get(index).unwrap(), lines.get(index + 1).unwrap(), lines.get(index + 2).unwrap()));
         }
 
-        Some(sum.to_string())
+        sum.to_string()
     }
 }

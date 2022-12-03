@@ -19,6 +19,6 @@ fn part_1_test() {
 
 #[test]
 fn part_2_test() {
-    assert_eq!(Day1::part_2(")").unwrap(), "1");
-    assert_eq!(Day1::part_2("()())").unwrap(), "5");
+    assert_eq!(Day1::part_2(")"), "1");
+    assert_eq!(Day1::part_2("()())"), "5");
 }

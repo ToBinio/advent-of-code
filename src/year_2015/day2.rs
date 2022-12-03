@@ -53,9 +53,9 @@ impl Day for Day2 {
         sum.to_string()
     }
 
-    fn part_2(input: &str) -> Option<String> {
+    fn part_2(input: &str) -> String {
         let sum: i32 = input.lines().map(Day2::get_needed_ribbon).sum();
 
-        Some(sum.to_string())
+        sum.to_string()
     }
 }

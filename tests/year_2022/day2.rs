@@ -23,7 +23,7 @@ fn get_result() {
 
 #[test]
 fn part_2_test() {
-    assert_eq!(Day2::part_2(include_str!("../../resources/year_2022/day2/test.txt")).unwrap(), "12");
+    assert_eq!(Day2::part_2(include_str!("../../resources/year_2022/day2/test.txt")), "12");
 }
 
 #[test]
