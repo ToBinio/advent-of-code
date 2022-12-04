@@ -1,4 +1,5 @@
 use crate::advent_of_code::day::Day;
+use crate::advent_of_code::input;
 
 pub struct Day3;
 
@@ -38,13 +39,7 @@ impl Day for Day3 {
     }
 
     fn part_1(input: &str) -> String {
-        let mut sum = 0;
-
-        for line in input.lines() {
-            sum += Day3::get_priority(Day3::get_shared_item(line));
-        }
-
-        sum.to_string()
+        input::sum(input, |line| Day3::get_priority(Day3::get_shared_item(line))).to_string()
     }
 
     fn part_2(input: &str) -> String {

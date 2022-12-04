@@ -1,4 +1,5 @@
 use crate::advent_of_code::day::Day;
+use crate::advent_of_code::input::sum;
 
 pub struct Day2;
 
@@ -48,14 +49,10 @@ impl Day for Day2 {
     }
 
     fn part_1(input: &str) -> String {
-        let sum: i32 = input.lines().map(Day2::get_needed_wrapping_paper).sum();
-
-        sum.to_string()
+        sum(input, Day2::get_needed_wrapping_paper).to_string()
     }
 
     fn part_2(input: &str) -> String {
-        let sum: i32 = input.lines().map(Day2::get_needed_ribbon).sum();
-
-        sum.to_string()
+        sum(input, Day2::get_needed_ribbon).to_string()
     }
 }

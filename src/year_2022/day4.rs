@@ -1,14 +1,13 @@
 use crate::advent_of_code::day::Day;
+use crate::advent_of_code::input;
 
 pub struct Day4;
 
 impl Day4 {
     pub fn input_to_ranges(input: &str) -> ((i32, i32), (i32, i32)) {
-        let mut input = input.split(",");
-        let mut input = (input.next().unwrap().split("-"), input.next().unwrap().split("-"));
-        let input = ((input.0.next().unwrap().parse().unwrap(), input.0.next().unwrap().parse().unwrap()), (input.1.next().unwrap().parse().unwrap(), input.1.next().unwrap().parse().unwrap()));
-
-        input
+        let mut input = input.split(',');
+        let mut input = (input.next().unwrap().split('-'), input.next().unwrap().split('-'));
+        ((input.0.next().unwrap().parse().unwrap(), input.0.next().unwrap().parse().unwrap()), (input.1.next().unwrap().parse().unwrap(), input.1.next().unwrap().parse().unwrap()))
     }
 
     pub fn in_range(point: i32, range: (i32, i32)) -> bool {
@@ -34,22 +33,10 @@ impl Day for Day4 {
     }
 
     fn part_1(input: &str) -> String {
-        let mut count = 0;
-
-        for line in input.lines() {
-            if Day4::range_contains_completely(line) { count += 1 }
-        }
-
-        count.to_string()
+        input::count(input, Day4::range_contains_completely).to_string()
     }
 
     fn part_2(input: &str) -> String {
-        let mut count = 0;
-
-        for line in input.lines() {
-            if Day4::range_contains_partly(line) { count += 1 }
-        }
-
-        count.to_string()
+        input::count(input, Day4::range_contains_partly).to_string()
     }
 }
