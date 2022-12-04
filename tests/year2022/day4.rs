@@ -1,4 +1,4 @@
-use advent_of_code::year_2022::day4::Day4;
+use advent_of_code::year2022::day4::Day4;
 
 #[test]
 fn range_contains_completely_test() {

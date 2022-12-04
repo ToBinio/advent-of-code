@@ -4,7 +4,7 @@ pub struct Day1;
 
 impl Day for Day1 {
     fn get_path() -> String {
-        "resources/year_2015/day1_data.txt".to_string()
+        "resources/year2015/day1_data.txt".to_string()
     }
 
     fn part_1(input: &str) -> String {

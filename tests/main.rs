@@ -1,2 +1,2 @@
-mod year_2022;
-mod year_2015;
+mod year2022;
+mod year2015;

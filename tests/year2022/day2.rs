@@ -1,9 +1,9 @@
 use advent_of_code::advent_of_code::day::Day;
-use advent_of_code::year_2022::day2::Day2;
+use advent_of_code::year2022::day2::Day2;
 
 #[test]
 fn part_1_test() {
-    assert_eq!(Day2::part_1(include_str!("../../resources/year_2022/day2/test.txt")), "15");
+    assert_eq!(Day2::part_1(include_str!("../../resources/year2022/day2/test.txt")), "15");
 }
 
 #[test]
@@ -23,7 +23,7 @@ fn get_result() {
 
 #[test]
 fn part_2_test() {
-    assert_eq!(Day2::part_2(include_str!("../../resources/year_2022/day2/test.txt")), "12");
+    assert_eq!(Day2::part_2(include_str!("../../resources/year2022/day2/test.txt")), "12");
 }
 
 #[test]
