@@ -3,7 +3,7 @@ use advent_of_code::year2022::day5::Day5;
 
 #[test]
 fn get_table_test() {
-    let (table, count) = Day5::get_table(include_str!("../../resources/year2022/day5/test.txt"));
+    let (table, count) = Day5::get_table(include_str!("../../resources/year2022/day5_test.txt"));
 
     assert_eq!(*table.get(0).unwrap(), vec!['N', 'Z']);
     assert_eq!(*table.get(1).unwrap(), vec!['D', 'C', 'M']);
@@ -14,7 +14,7 @@ fn get_table_test() {
 
 #[test]
 fn do_step_simple_test() {
-    let (mut table, _) = Day5::get_table(include_str!("../../resources/year2022/day5/test.txt"));
+    let (mut table, _) = Day5::get_table(include_str!("../../resources/year2022/day5_test.txt"));
 
     Day5::do_simple_step(&mut table, "move 1 from 2 to 1");
 
@@ -44,7 +44,7 @@ fn do_step_simple_test() {
 
 #[test]
 fn do_multi_step_test() {
-    let (mut table, _) = Day5::get_table(include_str!("../../resources/year2022/day5/test.txt"));
+    let (mut table, _) = Day5::get_table(include_str!("../../resources/year2022/day5_test.txt"));
 
     Day5::do_multi_step(&mut table, "move 1 from 2 to 1");
 
@@ -73,16 +73,16 @@ fn do_multi_step_test() {
 
 #[test]
 fn get_top_of_table_test() {
-    let (table, _) = Day5::get_table(include_str!("../../resources/year2022/day5/test.txt"));
+    let (table, _) = Day5::get_table(include_str!("../../resources/year2022/day5_test.txt"));
     assert_eq!(Day5::get_top_of_table(&table), "NDP")
 }
 
 #[test]
 fn part_1_test() {
-    assert_eq!(Day5::part_1(include_str!("../../resources/year2022/day5/test.txt")), "CMZ")
+    assert_eq!(Day5::part_1(include_str!("../../resources/year2022/day5_test.txt")), "CMZ")
 }
 
 #[test]
 fn part_2_test() {
-    assert_eq!(Day5::part_2(include_str!("../../resources/year2022/day5/test.txt")), "MCD")
+    assert_eq!(Day5::part_2(include_str!("../../resources/year2022/day5_test.txt")), "MCD")
 }
