@@ -10,16 +10,12 @@ impl Day5 {
         for line in input.lines() {
             let chars: Vec<_> = line.chars().collect();
 
-            let mut count = 0;
-
-            for index in (1..chars.len()).step_by(4) {
+            for (count, index) in (1..chars.len()).step_by(4).enumerate() {
                 if table.len() <= count {
                     table.push(Vec::new());
                 }
 
                 let char = chars.get(index).unwrap();
-
-                count += 1;
 
                 if char == &' ' {
                     continue;
@@ -29,7 +25,7 @@ impl Day5 {
                     break 'outer;
                 }
 
-                table.get_mut(count - 1).unwrap().push(char.to_owned());
+                table.get_mut(count).unwrap().push(char.to_owned());
             }
         }
 
@@ -44,7 +40,7 @@ impl Day5 {
         (table, highest)
     }
 
-    pub fn do_simple_step(table: &mut Vec<Vec<char>>, line: &str) {
+    pub fn do_simple_step(table: &mut [Vec<char>], line: &str) {
         let split: Vec<_> = line.split(' ').collect();
 
         let count = split.get(1).unwrap().parse::<usize>().unwrap();
@@ -60,7 +56,7 @@ impl Day5 {
         }
     }
 
-    pub fn do_multi_step(table: &mut Vec<Vec<char>>, line: &str) {
+    pub fn do_multi_step(table: &mut [Vec<char>], line: &str) {
         let split: Vec<_> = line.split(' ').collect();
 
         let count = split.get(1).unwrap().parse::<usize>().unwrap();
@@ -80,7 +76,7 @@ impl Day5 {
         let mut text = "".to_string();
 
         for stack in table {
-            text += &*stack.get(0).unwrap().to_string();
+            text += &*stack.first().unwrap().to_string();
         }
 
         text.to_string()
