@@ -11,10 +11,10 @@ impl Day7 {
         for line in input.lines().skip(1) {
             let line: Vec<_> = line.split(' ').collect();
 
-            if line.get(0).unwrap() == &"$" {
+            if line.first().unwrap() == &"$" {
                 Day7::parse_command(&line, &mut path);
             } else {
-                let first_split = line.get(0).unwrap().parse::<i32>();
+                let first_split = line.first().unwrap().parse::<i32>();
 
                 match first_split {
                     Ok(value) => {
@@ -30,19 +30,19 @@ impl Day7 {
         root
     }
 
-    pub fn parse_command(command: &Vec<&str>, path: &mut Vec<String>) {
-        match command.get(1).unwrap() {
-            &"cd" => {
-                let location = command.get(2).unwrap();
+    pub fn parse_command(command: &[&str], path: &mut Vec<String>) {
+        match *command.get(1).unwrap() {
+            "cd" => {
+                let location = *command.get(2).unwrap();
                 match location {
-                    &"/" => {
+                    "/" => {
                         path.clear();
                         path.push("/".to_string());
                     }
-                    &".." => {
+                    ".." => {
                         path.pop();
                     }
-                    &_ => {
+                    _ => {
                         path.push(location.to_string());
                     }
                 }
@@ -127,7 +127,7 @@ impl Folder {
 
 
     pub fn get_inner_folder(&mut self, mut name: Vec<String>) -> &mut Folder {
-        if name.len() == 0 {
+        if name.is_empty() {
             return self;
         }
 

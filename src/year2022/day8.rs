@@ -18,7 +18,7 @@ impl Day8 {
         grid
     }
 
-    pub fn get_value(pos: (usize, usize), grid: &Vec<Vec<i32>>) -> i32 {
+    pub fn get_value(pos: (usize, usize), grid: &[Vec<i32>]) -> i32 {
         *grid.get(pos.1).unwrap().get(pos.0).unwrap()
     }
 
@@ -75,7 +75,7 @@ impl Day8 {
             }
         }
 
-        return is_visible;
+        is_visible
     }
 
 
@@ -126,9 +126,7 @@ impl Day8 {
             }
         }
 
-        let count_score = score.0 * score.1 * score.2 * score.3;
-
-        count_score
+        score.0 * score.1 * score.2 * score.3
     }
 }
 
