@@ -1,12 +1,12 @@
 use std::f32::consts::PI;
 
-use crate::advent_of_code::day::Day;
+use crate::advent_of_code::day::{Day, Year};
 
 pub struct Day1;
 
 impl Day for Day1 {
-    fn get_path() -> String {
-        "resources/year2016/day1_data.txt".to_string()
+    fn get_date() -> (Year, i32) {
+        (Year::Year2016, 1)
     }
 
     fn part_1(input: &str) -> String {

@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-use crate::advent_of_code::day::Day;
+use crate::advent_of_code::day::{Day, Year};
 
 pub struct Day6;
 
@@ -35,8 +35,8 @@ impl Day6 {
 }
 
 impl Day for Day6 {
-    fn get_path() -> String {
-        "resources/year2022/day6_data.txt".to_string()
+    fn get_date() -> (Year, i32) {
+        (Year::Year2022, 6)
     }
 
     fn part_1(input: &str) -> String {

@@ -1,4 +1,4 @@
-use crate::advent_of_code::day::Day;
+use crate::advent_of_code::day::{Day, Year};
 use crate::advent_of_code::input;
 
 pub struct Day3;
@@ -34,8 +34,8 @@ impl Day3 {
 }
 
 impl Day for Day3 {
-    fn get_path() -> String {
-        "resources/year2022/day3_data.txt".to_string()
+    fn get_date() -> (Year, i32) {
+        (Year::Year2022, 3)
     }
 
     fn part_1(input: &str) -> String {
