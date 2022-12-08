@@ -16,7 +16,6 @@ fn get_group_item_test() {
     assert_eq!(Day3::get_group_item("wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn", "ttgJtRGJQctTZtZT", "CrZsJsPPZsGzwwsLwLmpwMDw"), 'Z');
 }
 
-
 #[test]
 fn get_priority_test() {
     assert_eq!(Day3::get_priority('p'), 16);

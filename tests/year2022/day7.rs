@@ -23,10 +23,10 @@ fn parse_test() {
 
 #[test]
 fn part_1_test() {
-    assert_eq!(Day7::part_1(include_str!("../../resources/year2022/day7_test.txt")), "95437");
+    assert_eq!(Day7::part_1(Day7::get_test_input().as_str()), "95437");
 }
 
 #[test]
 fn part_2_test() {
-    assert_eq!(Day7::part_2(include_str!("../../resources/year2022/day7_test.txt")), "24933642");
+    assert_eq!(Day7::part_2(Day7::get_test_input().as_str()), "24933642");
 }

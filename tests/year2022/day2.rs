@@ -2,11 +2,6 @@ use advent_of_code::advent_of_code::day::Day;
 use advent_of_code::year2022::day2::Day2;
 
 #[test]
-fn part_1_test() {
-    assert_eq!(Day2::part_1(include_str!("../../resources/year2022/day2_test.txt")), "15");
-}
-
-#[test]
 fn get_result() {
     assert_eq!(Day2::get_result(("A", "X")), 3);
     assert_eq!(Day2::get_result(("B", "Y")), 3);
@@ -22,11 +17,6 @@ fn get_result() {
 }
 
 #[test]
-fn part_2_test() {
-    assert_eq!(Day2::part_2(include_str!("../../resources/year2022/day2_test.txt")), "12");
-}
-
-#[test]
 fn get_what_to_choose() {
     assert_eq!(Day2::get_what_to_choose(("B", "Y")), "B");
     assert_eq!(Day2::get_what_to_choose(("A", "X")), "C");
@@ -39,4 +29,14 @@ fn get_what_to_choose() {
     assert_eq!(Day2::get_what_to_choose(("A", "Y")), "A");
     assert_eq!(Day2::get_what_to_choose(("C", "X")), "B");
     assert_eq!(Day2::get_what_to_choose(("B", "Z")), "C");
+}
+
+#[test]
+fn part_1_test() {
+    assert_eq!(Day2::part_1(Day2::get_test_input().as_str()), "15");
+}
+
+#[test]
+fn part_2_test() {
+    assert_eq!(Day2::part_2(Day2::get_test_input().as_str()), "12");
 }
