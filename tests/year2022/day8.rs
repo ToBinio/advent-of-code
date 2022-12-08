@@ -3,7 +3,7 @@ use advent_of_code::year2022::day8::Day8;
 
 #[test]
 fn to_grid_test() {
-    let grid = Day8::make_grid(include_str!("../../resources/year2022/day8/test.txt"));
+    let grid = Day8::make_grid(Day8::get_test_input().as_str());
 
     assert_eq!(grid.len(), 5);
 
@@ -14,7 +14,7 @@ fn to_grid_test() {
 
 #[test]
 fn is_visible_test() {
-    let grid = Day8::make_grid(include_str!("../../resources/year2022/day8/test.txt"));
+    let grid = Day8::make_grid(Day8::get_test_input().as_str());
 
     assert!(Day8::is_visible((0, 0), &grid));
     assert!(Day8::is_visible((2, 4), &grid));
@@ -33,18 +33,18 @@ fn is_visible_test() {
 
 #[test]
 fn get_scenic_score_test() {
-    let grid = Day8::make_grid(include_str!("../../resources/year2022/day8/test.txt"));
+    let grid = Day8::make_grid(Day8::get_test_input().as_str());
     assert_eq!(Day8::get_scenic_score((2, 1), &grid), 4);
     assert_eq!(Day8::get_scenic_score((2, 3), &grid), 8);
 }
 
 #[test]
 fn part_1_test() {
-    assert_eq!(Day8::part_1(include_str!("../../resources/year2022/day8/test.txt")), "21")
+    assert_eq!(Day8::part_1(Day8::get_test_input().as_str()), "21")
 }
 
 
 #[test]
 fn part_2_test() {
-    assert_eq!(Day8::part_2(include_str!("../../resources/year2022/day8/test.txt")), "8")
+    assert_eq!(Day8::part_2(Day8::get_test_input().as_str()), "8")
 }
