@@ -1,6 +1,6 @@
 use advent_of_code::advent_of_code::day::Day;
-use advent_of_code::year2022::day8::Day8;
+use advent_of_code::year2022::day9::Day9;
 
 fn main() {
-    Day8::run();
+    Day9::run();
 }
