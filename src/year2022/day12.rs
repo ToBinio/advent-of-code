@@ -1,4 +1,4 @@
-use std::cmp::Ordering;
+use colored::Colorize;
 
 use crate::advent_of_code::day::{Day, Year};
 
@@ -36,74 +36,74 @@ impl Day12 {
         (map, start_pos, goal_pos)
     }
 
-    pub fn find_shorted_path(map: &Vec<Vec<i32>>, current_pos: (i32, i32), goal_pos: (i32, i32), smallest_path: &mut i32, path: &mut Vec<(i32, i32)>, never_list: &mut Vec<(i32, i32)>) -> bool {
-        if never_list.contains(&current_pos) {
-            return false;
-        }
-        if path.contains(&current_pos) {
-            return *path.get(path.len() - 2).unwrap() != current_pos;
+    pub fn find_shorted_path(map: &Vec<Vec<i32>>, current_pos: (i32, i32), goal_pos: (i32, i32)) -> i32 {
+        let mut open_cells = vec![Cell { pos: current_pos, path_cell: None, path_count: 0 }];
+        let mut closed_cells: Vec<Cell> = vec![];
+
+        while open_cells.len() > 0 {
+            open_cells.sort_by(|cell1, cell2|
+                {
+                    (Day12::get_distance_to_goal(cell1.pos, goal_pos) + cell1.path_count).cmp(&(Day12::get_distance_to_goal(cell2.pos, goal_pos) + cell2.path_count)).reverse()
+                });
+
+            let current_cell = open_cells.pop().unwrap();
+
+            Day12::handle_cell(map, (current_cell.pos.0 + 1, current_cell.pos.1), &current_cell, &mut open_cells, &mut closed_cells);
+            Day12::handle_cell(map, (current_cell.pos.0 - 1, current_cell.pos.1), &current_cell, &mut open_cells, &mut closed_cells);
+            Day12::handle_cell(map, (current_cell.pos.0, current_cell.pos.1 + 1), &current_cell, &mut open_cells, &mut closed_cells);
+            Day12::handle_cell(map, (current_cell.pos.0, current_cell.pos.1 - 1), &current_cell, &mut open_cells, &mut closed_cells);
+
+            closed_cells.push(current_cell);
         }
 
-        if current_pos == goal_pos {
-            if *smallest_path == -1 || path.len() < *smallest_path as usize {
-                *smallest_path = path.len() as i32;
+        let mut cells = vec![];
+
+        let mut last_pos = goal_pos;
+        if closed_cells.iter().find(|other| other.pos == last_pos).is_none() {
+            return -1;
+        }
+
+        loop {
+            cells.push(last_pos.clone());
+            let cell = closed_cells.iter().find(|other| other.pos == last_pos).unwrap();
+
+            if cell.path_cell.is_none() {
+                break;
             }
 
-            println!("{}", path.len());
-            return true;
-        }
-        path.push(current_pos);
-
-        let current_height = Day12::get_value(map, current_pos);
-
-        let mut valid_path_found = false;
-        let mut valid_positions = vec![];
-
-        if Day12::valid_move(map, (current_pos.0 + 1, current_pos.1), current_height) {
-            valid_positions.push((current_pos.0 + 1, current_pos.1));
+            last_pos = cell.path_cell.unwrap();
         }
 
-        if Day12::valid_move(map, (current_pos.0 - 1, current_pos.1), current_height) {
-            valid_positions.push((current_pos.0 - 1, current_pos.1));
-        }
+        cells.len() as i32 - 1
+    }
 
-        if Day12::valid_move(map, (current_pos.0, current_pos.1 + 1), current_height) {
-            valid_positions.push((current_pos.0, current_pos.1 + 1));
-        }
+    pub fn handle_cell(map: &Vec<Vec<i32>>, pos: (i32, i32), current_cell: &Cell, open_cells: &mut Vec<Cell>, closed_cells: &mut Vec<Cell>) {
+        if Day12::valid_move(map, pos, Day12::get_value(map, current_cell.pos)) {
+            let mut cell_to_open = open_cells.iter_mut().find(|cell| cell.pos == pos);
+            if cell_to_open.is_none() {
+                cell_to_open = closed_cells.iter_mut().find(|cell| cell.pos == pos);
+            }
 
-        if Day12::valid_move(map, (current_pos.0, current_pos.1 - 1), current_height) {
-            valid_positions.push((current_pos.0, current_pos.1 - 1));
-        }
-
-        valid_positions.sort_by(|pos1, pos2|
-            {
-                let height1 = Day12::get_value(map, *pos1);
-                let height2 = Day12::get_value(map, *pos2);
-
-                let ordering = height1.cmp(&height2).reverse();
-
-                if ordering != Ordering::Equal {
-                    return ordering;
+            match cell_to_open {
+                None => {
+                    open_cells.push(Cell {
+                        pos,
+                        path_cell: Some(current_cell.pos),
+                        path_count: current_cell.path_count + 1,
+                    })
                 }
-
-                ((pos1.0 - goal_pos.0).abs() + (pos1.1 - goal_pos.1).abs()).cmp(&((pos2.0 - goal_pos.0).abs() + (pos2.1 - goal_pos.1).abs()))
-            }
-        );
-
-        for pos in valid_positions {
-            if Day12::find_shorted_path(map, pos, goal_pos, smallest_path, path, never_list) {
-                valid_path_found = true;
+                Some(cell) => {
+                    if cell.path_count > (current_cell.path_count + 1) {
+                        cell.path_count = current_cell.path_count + 1;
+                        cell.path_cell = Some(current_cell.pos);
+                    }
+                }
             }
         }
+    }
 
-        path.remove(path.iter().position(|element| *element == current_pos).unwrap());
-
-        if !valid_path_found {
-            never_list.push(current_pos);
-            println!("{}", never_list.len());
-        }
-
-        valid_path_found
+    pub fn get_distance_to_goal(current_pos: (i32, i32), goal_pos: (i32, i32)) -> i32 {
+        (current_pos.0 - goal_pos.0).abs() + (current_pos.1 - goal_pos.1).abs()
     }
 
     pub fn get_value(map: &Vec<Vec<i32>>, pos: (i32, i32)) -> i32 {
@@ -126,13 +126,38 @@ impl Day for Day12 {
 
     fn part_1(input: &str) -> String {
         let (map, start_pos, goal_pos) = Day12::generate_map(input);
-        let mut smallest_path = -1;
-        Day12::find_shorted_path(&map, start_pos, goal_pos, &mut smallest_path, &mut vec![], &mut vec![]);
-
-        smallest_path.to_string()
+        Day12::find_shorted_path(&map, start_pos, goal_pos).to_string()
     }
 
     fn part_2(input: &str) -> String {
-        todo!()
+        let (map, _, goal_pos) = Day12::generate_map(input);
+
+        let mut smallest = -1;
+
+        for (y, line) in map.iter().enumerate() {
+            for (x, value) in line.iter().enumerate() {
+                if *value != 0 {
+                    continue;
+                }
+
+                let path = Day12::find_shorted_path(&map, (y as i32, x as i32), goal_pos);
+
+                if path == -1 {
+                    continue;
+                }
+
+                if smallest == -1 || path < smallest {
+                    smallest = path;
+                }
+            }
+        }
+
+        smallest.to_string()
     }
+}
+
+pub struct Cell {
+    pub pos: (i32, i32),
+    pub path_cell: Option<(i32, i32)>,
+    pub path_count: i32,
 }

@@ -16,3 +16,8 @@ fn generate_map() {
 fn part_1_test() {
     assert_eq!(Day12::part_1(Day12::get_test_input().as_str()), "31")
 }
+
+#[test]
+fn part_2_test() {
+    assert_eq!(Day12::part_2(Day12::get_test_input().as_str()), "29")
+}

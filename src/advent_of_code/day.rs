@@ -24,17 +24,12 @@ pub trait Day {
         println!("Part 1");
         println!("{}", Self::part_1(input.as_str()));
 
-        let prev_hook = panic::take_hook();
-        panic::set_hook(Box::new(|_| {}));
-
         let _ = panic::catch_unwind(|| {
             let part2 = Self::part_2(input.as_str());
 
             println!("\nPart 2");
             println!("{}", part2);
         });
-
-        panic::set_hook(prev_hook);
     }
 }
 
